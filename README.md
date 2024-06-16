@@ -1,20 +1,45 @@
 # Daniel W's Dotfiles
 
+Makes it easy to setup new machines, or reinstalling new OS, and get right back to work.
+
+The zshrc will:
+1. Automatically install if not exist the latest versions of
+  a. Lazydocker
+  b. Lazygit
+  c. Golang Compiler
+  d. Miniconda with latest Python
+  e. NVM and install and use Node LTS
+  f. Neovim
+  g. Git delta
+  h. Yazi (Terminal File Explorer)
+  i. Fzf
+  j. Lazysql
+  Everything will be installed from github source to get the latest release, because apt package's version tends to be left behind too much. 
+2. Apply Git delta to .gitconfig
+3. Install zsh plugins and snippets using zinit, including fzf-tab, zsh-completions and autosuggestions, fast-syntax-highlting. Snippets from Oh My Zsh
+4. Install powerlevel10k
+5. A lot of my custom functions and aliases
+
+My Neovim:
+1. Based on Lazyvim, with a lot of extra plugins
+
+My Tmux Config:
+1. Very nice clipboard integration with WSL2, and regular xclip because i do use both WSL and native Linux
+
 ## Instruction
 1. Clone
 2. Stow
 
-## Example Files
+## Additional Conditional Files Template/Cheatsheet
 
-### .clangd
+### ~/.clangd
 ```yaml
 CompileFlags:
   Add:
-    - "-I/home/daniel/development/postgresql-16.1/src/include"
-    - "-I/home/daniel/development/postgresql-16.1/include"
+    - "-Iinclude"
 ```
 
-### .gitconfig
+### ~/.gitconfig
 ```toml
 [user]
 	email = danielwiratman@gmail.com
@@ -28,7 +53,7 @@ CompileFlags:
   diffFilter = delta --color-only
 
 [delta]
-  navigate = true    # use n and N to move between diff sections
+  navigate = true
 
 [merge]
   conflictstyle = diff3
@@ -41,10 +66,11 @@ CompileFlags:
 ```bash 
 export OPENAI_API_KEY=
 
-alias conndo=""
-alias connss=""
+alias conndo="sshpass -p 123123 ssh -p 22 daniel@example.com"
 ```
 
+
+### Polkit rules for DWM thunar automount
 `cat /etc/polkit-1/rules.d/10-udisks2.rules`
 ```
 polkit.addRule(function(action, subject) {
@@ -58,9 +84,10 @@ polkit.addRule(function(action, subject) {
 
 Not Yet Integrated: Install flutter and android studio
 
-paru -S ueberzug ytfzf imv mpv zathura-pdf-mupdf qpwgraph peazip cups system-config-printer clang cmake ninja google-chrome code thunderbird dnsutils redshift
+### If use arch install these
+paru -S sshpass ueberzug ytfzf imv mpv zathura-pdf-mupdf qpwgraph peazip cups system-config-printer clang cmake ninja google-chrome code thunderbird dnsutils redshift
 
-
+### Change natural scrolling for touchpad in arch
 /etc/X11/xorg.conf.d/30-touchpad.conf
 ```
 Section "InputClass"
