@@ -1,0 +1,9 @@
+.config/lazygit/state.yml
+
+.config/nvim/lazy-lock.json
+.config/nvim/lazyvim.json
+.config/go/telemetry/local
+.config/htop
+.config/ookla
+.config/btop/btop.log
+.config/btop/btop.conf

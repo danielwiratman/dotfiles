@@ -1,0 +1,6 @@
+#!/bin/bash
+
+chosen=$(ls -I run_screenlayout.sh ~/.screenlayout | dmenu -p "Choose a screen layout:" "$@")
+if [ -n "$chosen" ]; then
+	sh ~/.screenlayout/"$chosen"
+fi

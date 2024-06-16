@@ -1,0 +1,11 @@
+account danielwiratman@gmail.com
+host smtp.gmail.com
+port 465
+from danielwiratman@gmail.com
+user danielwiratman@gmail.com
+passwordeval "pass danielwiratman@gmail.com"
+auth on
+tls on
+tls_trust_file	/etc/ssl/certs/ca-certificates.crt
+logfile /home/daniel/.local/state/msmtp/msmtp.log
+tls_starttls off
