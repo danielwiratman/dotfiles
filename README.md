@@ -3,17 +3,17 @@
 Makes it easy to setup new machines, or reinstalling new OS, and get right back to work.
 
 The zshrc will:
-1. Automatically install if not exist the latest versions of
-  a. Lazydocker
-  b. Lazygit
-  c. Golang Compiler
-  d. Miniconda with latest Python
-  e. NVM and install and use Node LTS
-  f. Neovim
-  g. Git delta
-  h. Yazi (Terminal File Explorer)
-  i. Fzf
-  j. Lazysql
+1. Automatically install if not exist the latest versions of  
+  a. Lazydocker  
+  b. Lazygit  
+  c. Golang Compiler  
+  d. Miniconda with latest Python  
+  e. NVM and install and use Node LTS  
+  f. Neovim  
+  g. Git delta  
+  h. Yazi (Terminal File Explorer)  
+  i. Fzf  
+  j. Lazysql  
   Everything will be installed from github source to get the latest release, because apt package's version tends to be left behind too much. 
 2. Apply Git delta to .gitconfig
 3. Install zsh plugins and snippets using zinit, including fzf-tab, zsh-completions and autosuggestions, fast-syntax-highlting. Snippets from Oh My Zsh
