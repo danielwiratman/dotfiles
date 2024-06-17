@@ -263,6 +263,9 @@ alias htpv="http -v"
 alias rmnswap="rm -rf /home/daniel/.local/state/nvim/swap/*"
 alias windows="cd /mnt/c/Users/Daniel"
 
+alias passmenu="passmenu -fn 'MesloLGS NF:size=14'"
+alias d="ddgr"
+
 # Shell integrations
 eval "$(fzf --zsh)"
 
@@ -440,14 +443,25 @@ unzip_auto() {
     rm -r temp_folder
 }
 
-disable_history() {
+dihis() {
     setopt noincappendhistory
     unset HISTFILE
 }
 
-enable_history() {
+enhis() {
     setopt incappendhistory
     HISTFILE=$HOME/.zsh_history
+}
+
+grayscale() {
+  $HOME/toggle-monitor-grayscale.sh
+  if [[ -f /tmp/grayscale ]]; then
+    feh --bg-fill $HOME/.config/ponywall/pwall_composite.jpg
+    rm /tmp/grayscale
+  else
+    feh --bg-fill $HOME/wallpapers/black.jpg
+    touch /tmp/grayscale
+  fi
 }
 
 if [[ "$ZPROF" = true ]]; then
