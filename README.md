@@ -98,3 +98,5 @@ Section "InputClass"
         Option "NaturalScrolling" "true"
 EndSection
 ```
+
+git clone https://github.com/BennyOe/onedark.yazi.git ~/.config/yazi/flavors/onedark.yazi

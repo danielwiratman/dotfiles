@@ -395,9 +395,11 @@ profzsh() {
 }
 
 t() {
-  tmux new-session -s main -n NOTES -d "cd ~/my-vault && nvim main.md"
-  tmux new-window -t main:1 -n zsh
-  my_tmux a
+  if tmux has-session -t main 2>/dev/null; then
+      my_tmux a -t main
+  else
+      my_tmux new-session -s main
+  fi
 }
 
 source ~/secrets.sh
