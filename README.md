@@ -85,7 +85,7 @@ polkit.addRule(function(action, subject) {
 Not Yet Integrated: Install flutter and android studio
 
 ### If use arch install these
-paru -S sshpass ueberzug ytfzf imv mpv zathura-pdf-mupdf qpwgraph peazip cups system-config-printer clang cmake ninja google-chrome code thunderbird dnsutils redshift ddgr
+paru -S sshpass ueberzug ytfzf imv mpv zathura-pdf-mupdf qpwgraph peazip cups system-config-printer clang cmake ninja google-chrome code thunderbird dnsutils redshift ddgr avahi-daemon wmname
 
 ### Change natural scrolling for touchpad in arch
 /etc/X11/xorg.conf.d/30-touchpad.conf
@@ -100,3 +100,16 @@ EndSection
 ```
 
 git clone https://github.com/BennyOe/onedark.yazi.git ~/.config/yazi/flavors/onedark.yazi
+
+Add this to /etc/nsswitch.conf
+```
+hosts: files mdns_minimal [NOTFOUND=return] dns
+```
+
+Add this to /etc/avahi/avahi-daemon.conf
+```
+[server]
+host-name=daniel
+...
+publish-workstation=yes
+```
