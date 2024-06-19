@@ -85,7 +85,7 @@ polkit.addRule(function(action, subject) {
 Not Yet Integrated: Install flutter and android studio
 
 ### If use arch install these
-paru -S sshpass ueberzug ytfzf imv mpv zathura-pdf-mupdf qpwgraph peazip cups system-config-printer clang cmake ninja google-chrome code thunderbird dnsutils redshift ddgr avahi-daemon wmname
+paru -S sshpass ueberzug ytfzf imv mpv zathura-pdf-mupdf qpwgraph peazip cups system-config-printer clang cmake ninja google-chrome code thunderbird dnsutils redshift ddgr avahi nss-mdns wmname
 
 ### Change natural scrolling for touchpad in arch
 /etc/X11/xorg.conf.d/30-touchpad.conf
@@ -112,4 +112,9 @@ Add this to /etc/avahi/avahi-daemon.conf
 host-name=daniel
 ...
 publish-workstation=yes
+```
+
+Update Pacman Mirrorlist
+```
+sudo reflector --country Indonesia --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist --connection-timeout 30
 ```

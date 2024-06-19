@@ -65,6 +65,9 @@ slstatus &
 # Thunar Daemon
 thunar --daemon &
 
+# Notifications
+dunst &
+
 # Clipmenu
 systemctl --user import-environment DISPLAY
 clipmenud &

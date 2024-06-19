@@ -229,6 +229,8 @@ export LD_LIBRARY_PATH=/usr/local/lib
 export TERM=xterm-256color
 
 # Aliases
+alias scrcpy="scrcpy --max-size 1024 --show-touches --turn-screen-off"
+
 alias ta="my_tmux a"
 alias ts="tmux splitw"
 alias tsh="tmux splitw -h"
