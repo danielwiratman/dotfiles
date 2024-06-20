@@ -216,6 +216,7 @@ set clipboard+=unnamedplus
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:/opt/nvim
+export PATH=$PATH:/opt/resolve/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/usr/bin/flutter/bin
 export PATH=$PATH:/usr/bin/android-studio/bin
