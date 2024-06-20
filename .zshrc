@@ -271,6 +271,7 @@ alias windows="cd /mnt/c/Users/Daniel"
 
 alias passmenu="passmenu -fn 'MesloLGS NF:size=14'"
 alias d="ddgr"
+alias wifi="nmtui connect"
 
 # Shell integrations
 eval "$(fzf --zsh)"
