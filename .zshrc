@@ -219,9 +219,12 @@ export PATH=$PATH:/opt/nvim
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/usr/bin/flutter/bin
 export PATH=$PATH:/usr/bin/android-studio/bin
-export PATH=$PATH:$HOME/Android/Sdk/platform-tools
 
 export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools
+
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
 
 export LD_LIBRARY_PATH=/usr/local/lib
