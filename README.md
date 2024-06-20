@@ -85,7 +85,7 @@ polkit.addRule(function(action, subject) {
 Not Yet Integrated: Install flutter and android studio
 
 ### If use arch install these
-paru -S sshpass ueberzug ytfzf imv mpv zathura-pdf-mupdf qpwgraph peazip cups system-config-printer clang cmake ninja google-chrome code thunderbird dnsutils redshift ddgr avahi nss-mdns wmname
+paru -S sshpass ueberzug ytfzf imv mpv zathura-pdf-mupdf qpwgraph peazip cups system-config-printer clang cmake ninja google-chrome code thunderbird dnsutils redshift ddgr avahi nss-mdns wmname paru ibus ibus-autostart ibus-daemon ibus-libpinyin
 
 ### Change natural scrolling for touchpad in arch
 /etc/X11/xorg.conf.d/30-touchpad.conf
