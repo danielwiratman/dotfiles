@@ -417,11 +417,6 @@ if [[ $(cat /proc/$PPID/comm) = "st" ]]; then
   opa 9
 fi
 
-start_windows() {
-  xdotool key Super_L+f
-  virtualboxvm --fullscreen --startvm "Windows 11"
-}
-
 eye() {
   temperature=2000
   if [[ $1 =~ ^[0-9]+$ ]]; then
