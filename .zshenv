@@ -4,5 +4,5 @@ if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
   if [[ -f /usr/bin/wmname ]]; then
     wmname LG3D
   fi
-	exec startx
+  exec startx
 fi

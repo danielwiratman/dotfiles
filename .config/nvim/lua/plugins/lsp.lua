@@ -17,6 +17,10 @@ return {
           },
         },
         dartls = {},
+        prismals = {},
+        eslint = {
+          codeActionOnSave = true,
+        },
       },
       inlay_hints = {
         enabled = false,
@@ -45,7 +49,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      ensure_installed = { "markdown", "dart" },
+      ensure_installed = { "markdown", "dart", "prisma" },
     },
   },
 
