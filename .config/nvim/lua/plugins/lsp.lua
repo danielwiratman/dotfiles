@@ -18,9 +18,6 @@ return {
         },
         dartls = {},
         prismals = {},
-        eslint = {
-          codeActionOnSave = true,
-        },
       },
       inlay_hints = {
         enabled = false,
