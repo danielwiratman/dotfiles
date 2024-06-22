@@ -264,7 +264,6 @@ alias zconfig="n ~/.zshrc && source ~/.zshrc"
 alias nconfig="cd ~/.config/nvim && n init.lua"
 alias tconfig="cd ~/.config/tmux && n tmux.conf"
 alias chatconfig="cd ~/.config/shell_gpt && n .sgptrc"
-alias chat="dopy && sgpt --repl temp"
 alias htpv="http -v"
 alias rmnswap="rm -rf /home/daniel/.local/state/nvim/swap/*"
 alias windows="cd /mnt/c/Users/Daniel"
@@ -465,6 +464,15 @@ grayscale() {
   else
     feh --bg-fill $HOME/wallpapers/black.jpg
     touch /tmp/grayscale
+  fi
+}
+
+chat() {
+  dopy
+  if [ -n "$1" ]; then
+    sgpt --repl "$1"
+  else
+    sgpt --repl temp
   fi
 }
 
