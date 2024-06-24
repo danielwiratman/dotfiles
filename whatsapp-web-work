@@ -1,0 +1,3 @@
+#!/bin/bash
+
+microsoft-edge-stable --profile='Profile 2' --app='https://web.whatsapp.com'

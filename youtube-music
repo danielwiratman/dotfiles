@@ -1,3 +1,3 @@
-!#/bin/bash
+#!/bin/bash
 
-microsoft-edge-stable --app="https://music.youtube.com"
+microsoft-edge-stable --profile='Default' --app="https://music.youtube.com"
