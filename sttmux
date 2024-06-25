@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if tmux has-session -t main 2>/dev/null; then
-    st -e tmux a -t main
-else
-    st -e tmux new-session -s main
-fi
