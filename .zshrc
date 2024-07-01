@@ -470,6 +470,14 @@ chat() {
   fi
 }
 
+# OLD
+#
+# my_tmux() {
+#   export TERM=screen-256color
+#   tmux -u "$@"
+#   export TERM=xterm-256color
+# }
+
 if [[ "$ZPROF" = true ]]; then
   zprof
 fi
