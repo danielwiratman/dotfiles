@@ -235,7 +235,7 @@ export TERM=xterm-256color
 # Aliases
 alias scrcpy="scrcpy --max-size 1024 --show-touches --turn-screen-off"
 
-alias ta="my_tmux a"
+alias ta="tmux a"
 alias ts="tmux splitw"
 alias tsh="tmux splitw -h"
 
@@ -333,12 +333,6 @@ donp() {
   dopy
 }
 
-my_tmux() {
-	export TERM=screen-256color
-	tmux -u "$@"
-	export TERM=xterm-256color
-}
-
 tsw() {
 	tmux swap-window -s "$1" -t "$2"
 }
@@ -402,9 +396,9 @@ profzsh() {
 
 t() {
   if tmux has-session -t main 2>/dev/null; then
-      my_tmux a -t main
+      tmux a -t main
   else
-      my_tmux new-session -s main
+      tmux new-session -s main
   fi
 }
 
@@ -479,3 +473,10 @@ chat() {
 if [[ "$ZPROF" = true ]]; then
   zprof
 fi
+
+# bun completions
+[ -s "/home/daniel/.bun/_bun" ] && source "/home/daniel/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
