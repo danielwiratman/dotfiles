@@ -15,3 +15,5 @@ docker run -d --name "$CONTAINER_NAME" --hostname debian11 debian:11 /bin/bash -
 CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$CONTAINER_NAME")
 
 echo "The IP address of the container is: $CONTAINER_IP"
+
+ssh-keygen -R $CONTAINER_IP
