@@ -81,17 +81,6 @@ if [ ! -f "$HOME/.local/bin/zoxide" ]; then
   curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 fi
 
-if [ ! -f /usr/local/bin/lazysql ]; then
-  echo "Installing lazysql..."
-  LATEST_LAZYSQL_VERSION=$(curl -s "https://api.github.com/repos/jorgerojas26/lazysql/releases/latest" | grep -Po '"tag_name": "\K[^"]*')
-  wget https://github.com/jorgerojas26/lazysql/releases/download/${LATEST_LAZYSQL_VERSION}/lazysql_Linux_x86_64.tar.gz
-  mkdir lazysql
-  tar xvzf lazysql_Linux_x86_64.tar.gz -C lazysql
-  sudo mv lazysql/lazysql /usr/local/bin
-  rm lazysql_Linux_x86_64.tar.gz
-  rm -rf lazysql
-fi
-
 # if .gitconfig not exists, create it
 if [ ! -f ~/.gitconfig ]; then
   echo "Creating .gitconfig..."
@@ -117,6 +106,12 @@ if [ ! -f ~/.gitconfig ]; then
 [diff]
   colorMoved = default" > ~/.gitconfig
 fi
+
+tmux() {
+  export TERM=screen-256color
+  tmux -u "$@"
+  export TERM=xterm-256color
+}
 
 # if secrets.sh not exists, create it
 if [ ! -f ~/secrets.sh ]; then
@@ -469,14 +464,6 @@ chat() {
     sgpt --repl temp
   fi
 }
-
-# OLD
-#
-# my_tmux() {
-#   export TERM=screen-256color
-#   tmux -u "$@"
-#   export TERM=xterm-256color
-# }
 
 if [[ "$ZPROF" = true ]]; then
   zprof
