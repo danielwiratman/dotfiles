@@ -118,3 +118,12 @@ Update Pacman Mirrorlist
 ```
 sudo reflector --country Indonesia --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist --connection-timeout 30
 ```
+
+Docker Hosts Updater
+```
+docker run -d --restart=always \
+    --name docker-hosts-updater \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /etc/hosts:/opt/hosts \
+    grachevko/docker-hosts-updater
+```

@@ -389,11 +389,17 @@ profzsh() {
   ZPROF=true $shell -i -c exit
 }
 
+my_tmux() {
+  export TERM=screen-256color
+  tmux -u "$@"
+  export TERM=xterm-256color
+}
+
 t() {
   if tmux has-session -t main 2>/dev/null; then
-      tmux a -t main
+      my_tmux a -t main
   else
-      tmux new-session -s main
+      my_tmux new-session -s main
   fi
 }
 
