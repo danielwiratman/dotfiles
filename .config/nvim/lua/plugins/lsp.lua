@@ -46,7 +46,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      ensure_installed = { "markdown", "dart", "prisma" },
+      ensure_installed = { "markdown", "dart", "prisma", "sql" },
     },
   },
 

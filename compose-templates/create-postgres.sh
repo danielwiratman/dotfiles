@@ -2,7 +2,7 @@
 
 read -p "Enter container name: " CONTAINER_NAME
 
-CONTAINER_ID=$(docker run -d -e POSTGRES_PASSWORD=123123 --name $CONTAINER_NAME postgres:16)
+CONTAINER_ID=$(docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=123123 --name $CONTAINER_NAME postgres:16)
 
 sleep 5
 
