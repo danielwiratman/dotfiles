@@ -394,11 +394,17 @@ profzsh() {
   ZPROF=true $shell -i -c exit
 }
 
+my_tmux() {
+  export TERM=screen-256color
+  tmux -u "$@"
+  export TERM=xterm-256color
+}
+
 t() {
   if tmux has-session -t main 2>/dev/null; then
-      tmux a -t main
+      my_tmux a -t main
   else
-      tmux new-session -s main
+      my_tmux new-session -s main
   fi
 }
 
@@ -470,21 +476,20 @@ chat() {
   fi
 }
 
-# OLD
-#
-# my_tmux() {
-#   export TERM=screen-256color
-#   tmux -u "$@"
-#   export TERM=xterm-256color
-# }
+[ -s "/home/daniel/.bun/_bun" ] && source "/home/daniel/.bun/_bun"
+
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+NFT_FLAG_FILE="/tmp/nft_rules_applied"
+if grep -q "WSL2" /proc/version; then
+  if [ ! -f "$NFT_FLAG_FILE" ]; then
+    sudo nft add chain 'ip nat WSLPREROUTING { type nat hook prerouting priority dstnat - 1; policy accept; }'
+    sudo nft insert rule 'ip nat WSLPREROUTING iif loopback0 ip daddr 127.0.0.1 counter dnat to 127.0.0.1'
+    touch "$NFT_FLAG_FILE"
+  fi
+fi
 
 if [[ "$ZPROF" = true ]]; then
   zprof
 fi
-
-# bun completions
-[ -s "/home/daniel/.bun/_bun" ] && source "/home/daniel/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
