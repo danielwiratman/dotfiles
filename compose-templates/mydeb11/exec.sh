@@ -1,18 +1,14 @@
 #!/bin/bash
 
-read -p "Container name: " CONTAINER_NAME
-
-COMMAND="docker exec -it -u user1 $CONTAINER_NAME /bin/bash"
-
 echo "Command:"
-echo $COMMAND
+echo "docker exec -it -u user1 <container-name> bash"
 echo
-echo "Execute ([y]/n)?"
-read -r execute
+echo "Execute? (y/[n])"
+read -r choice
 
-if [ "$execute" = "n" ]; then
-  echo "Aborted."
-  exit 1
+if [ "$choice" = "y" ]; then
+  read -p "Container name: " container
+  echo "docker exec -it -u user1 $container bash"
+  echo
+  docker exec -it -u user1 $container bash
 fi
-
-$COMMAND

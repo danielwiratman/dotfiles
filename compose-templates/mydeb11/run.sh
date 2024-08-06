@@ -2,7 +2,7 @@
 
 read -p "Container name: " CONTAINER_NAME
 
-COMMAND="docker run -d --name $CONTAINER_NAME --hostname mydeb11 --network host mydeb11"
+COMMAND="docker run -d --name $CONTAINER_NAME --network host mydeb11"
 
 echo "Command:"
 echo $COMMAND
