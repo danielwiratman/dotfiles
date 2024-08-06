@@ -7,3 +7,6 @@
 .config/ookla
 .config/btop/btop.log
 .config/btop/btop.conf
+.config/gh/hosts.yml
+.config/gh/config.yml
+.config/tmux/plugins/tmux-power
