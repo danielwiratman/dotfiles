@@ -1,9 +1,8 @@
 FROM debian:11
 
-ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
 
-RUN apt-get update && \
-  apt-get install -y sudo openssh-server vim nano git curl wget pkg-config build-essential
+RUN apt-get install -y sudo openssh-server git curl wget
 
 RUN echo 'root:123123' | chpasswd
 
@@ -34,4 +33,8 @@ RUN LATEST_NVM_VERSION=$(curl -s "https://api.github.com/repos/nvm-sh/nvm/releas
 
 USER root
 
-CMD ["bash", "-c", "/usr/sbin/sshd -D & && sleep infinity"]
+RUN apt-get install -y vim nano pkg-config build-essential dumb-init iproute2 iputils-ping net-tools
+
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+
+CMD ["bash", "-c", "/usr/sbin/sshd -D"]
