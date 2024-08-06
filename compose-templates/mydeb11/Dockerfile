@@ -33,4 +33,5 @@ RUN LATEST_NVM_VERSION=$(curl -s "https://api.github.com/repos/nvm-sh/nvm/releas
   npm install -g yarn
 
 USER root
-CMD ["/usr/sbin/sshd", "-D"]
+
+CMD ["bash", "-c", "/usr/sbin/sshd -D & && sleep infinity"]
