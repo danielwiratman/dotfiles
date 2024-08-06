@@ -107,12 +107,6 @@ if [ ! -f ~/.gitconfig ]; then
   colorMoved = default" > ~/.gitconfig
 fi
 
-tmux() {
-  export TERM=screen-256color
-  tmux -u "$@"
-  export TERM=xterm-256color
-}
-
 # if secrets.sh not exists, create it
 if [ ! -f ~/secrets.sh ]; then
   echo "Creating secrets.sh..."
