@@ -481,15 +481,6 @@ chatsh() {
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-NFT_FLAG_FILE="/tmp/nft_rules_applied"
-if grep -q "WSL2" /proc/version; then
-  if [ ! -f "$NFT_FLAG_FILE" ]; then
-    sudo nft add chain 'ip nat WSLPREROUTING { type nat hook prerouting priority dstnat - 1; policy accept; }'
-    sudo nft insert rule 'ip nat WSLPREROUTING iif loopback0 ip daddr 127.0.0.1 counter dnat to 127.0.0.1'
-    touch "$NFT_FLAG_FILE"
-  fi
-fi
-
 if [[ "$ZPROF" = true ]]; then
   zprof
 fi
