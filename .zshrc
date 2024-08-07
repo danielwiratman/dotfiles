@@ -465,6 +465,17 @@ chat() {
   fi
 }
 
+chatsh() {
+  dopy
+  if [ -n "$1" ]; then
+    sgpt -s "$1"
+  else
+    echo "Prompt: "
+    read cmd
+    sgpt -s "$cmd"
+  fi
+}
+
 [ -s "/home/daniel/.bun/_bun" ] && source "/home/daniel/.bun/_bun"
 
 export BUN_INSTALL="$HOME/.bun"
