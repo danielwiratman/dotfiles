@@ -228,6 +228,8 @@ alias ta="tmux a"
 alias ts="tmux splitw"
 alias tsh="tmux splitw -h"
 
+alias sssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+
 alias ls="ls --color"
 alias l="ls -ltrah"
 
