@@ -261,6 +261,8 @@ alias passmenu="passmenu -fn 'MesloLGS NF:size=14'"
 alias d="ddgr"
 alias wifi="nmtui connect"
 
+alias sssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+
 # Shell integrations
 eval "$(fzf --zsh)"
 
@@ -290,8 +292,8 @@ doese() {
 }
 
 dopg() {
-	export PATH=$PATH:"/home/daniel/development/pg/bin"
-	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/home/daniel/development/pg/lib"
+	export PATH=$PATH:"/home/daniel/development/pgsql-16.2/bin"
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/home/daniel/development/pgsql-16.2/lib"
 	alias pgstart="pg_ctl -D /home/daniel/development/datadir/data1/ -l /home/daniel/development/datadir/data1/logfile start"
 	alias pgrestart="pg_ctl -D /home/daniel/development/datadir/data1/ -l /home/daniel/development/datadir/data1/logfile restart"
 	alias pgstop="pg_ctl -D /home/daniel/development/datadir/data1/ -l /home/daniel/development/datadir/data1/logfile stop"
