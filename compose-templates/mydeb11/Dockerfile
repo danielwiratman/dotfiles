@@ -11,7 +11,8 @@ RUN useradd -m -s /bin/bash user1 && \
   usermod -aG sudo user1
 
 RUN mkdir /var/run/sshd && \
-  echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
+  echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config && \
+  echo 'Port 2222' >> /etc/ssh/sshd_config
 
 WORKDIR /home/user1
 
@@ -35,6 +36,8 @@ USER root
 
 RUN apt-get install -y vim nano pkg-config build-essential dumb-init iproute2 iputils-ping net-tools
 
-ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+# ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+# CMD ["bash", "-c", "/usr/sbin/sshd -D"]
 
-CMD ["bash", "-c", "/usr/sbin/sshd -D"]
+ENTRYPOINT ["/usr/bin/dumb-init"]
+CMD ["bash"]
