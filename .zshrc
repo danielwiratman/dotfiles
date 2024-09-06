@@ -32,12 +32,12 @@ if [ ! -f "$HOME/miniconda3/bin/conda" ]; then
   rm Miniconda3-latest-Linux-x86_64.sh
 fi
 
-if [ ! -f "$HOME/.nvm/nvm.sh" ]; then
+if [ ! -f "$HOME/.config/nvm/nvm.sh" ]; then
   echo "Installing nvm..."
   LATEST_NVM_VERSION=$(curl -s "https://api.github.com/repos/nvm-sh/nvm/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v${LATEST_NVM_VERSION}/install.sh | bash
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  export NVM_DIR="$HOME/.config/nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   nvm install --lts
   nvm use --lts
 fi
@@ -300,7 +300,7 @@ dopg() {
 }
 
 donode() {
-  export NVM_DIR="$HOME/.nvm"
+  export NVM_DIR="$HOME/.config/nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 }
@@ -482,6 +482,8 @@ chatsh() {
 
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+donp
 
 if [[ "$ZPROF" = true ]]; then
   zprof
