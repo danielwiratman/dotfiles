@@ -104,7 +104,10 @@ if [ ! -f ~/.gitconfig ]; then
   conflictstyle = diff3
 
 [diff]
-  colorMoved = default" > ~/.gitconfig
+  colorMoved = default
+
+[credential]
+	helper = store" > ~/.gitconfig
 fi
 
 # if secrets.sh not exists, create it
