@@ -248,6 +248,8 @@ alias lsq="lazysql"
 alias o="xdg-open"
 alias yt="ytfzf"
 
+alias quicknote="vim /tmp/$(uuid).md"
+
 alias py="python"
 
 alias mmi="make && make install"

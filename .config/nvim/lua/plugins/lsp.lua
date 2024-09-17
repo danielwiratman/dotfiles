@@ -18,6 +18,7 @@ return {
         },
         dartls = {},
         prismals = {},
+        basedpyright = {},
       },
       inlay_hints = {
         enabled = false,
@@ -39,6 +40,8 @@ return {
         "gofumpt",
         "goimports",
         "impl",
+
+        "basedpyright",
       },
     },
   },
