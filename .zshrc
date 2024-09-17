@@ -248,7 +248,7 @@ alias lsq="lazysql"
 alias o="xdg-open"
 alias yt="ytfzf"
 
-alias quicknote="vim /tmp/$(uuid).md"
+alias qn="vim /tmp/$(uuid).md"
 
 alias py="python"
 
