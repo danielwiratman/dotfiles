@@ -25,5 +25,3 @@ end
 vim.cmd("command! TmuxSplitHorizontal lua TmuxSplitHorizontal()")
 
 vim.cmd("command! GoImpl Telescope goimpl")
-
-require("auto-save").off()

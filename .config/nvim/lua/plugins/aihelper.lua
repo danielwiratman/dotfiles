@@ -7,6 +7,9 @@ return {
         clear_suggestion = "<C-x>",
         accept_word = "<C-;>",
       },
+      condition = function()
+        return false
+      end,
     },
   },
 }

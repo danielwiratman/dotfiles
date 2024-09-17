@@ -26,14 +26,8 @@ vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>AerialToggle<CR> ", {
   desc = "Toggle Aerial",
 })
 
-vim.api.nvim_set_keymap("n", "<leader>ais", "<cmd>SupermavenStop<CR>", {
+vim.api.nvim_set_keymap("n", "<leader>ai", "<cmd>SupermavenToggle<CR>", {
   noremap = true,
   silent = true,
-  desc = "Stop Supermaven",
-})
-
-vim.api.nvim_set_keymap("n", "<leader>aig", "<cmd>SupermavenStart<CR>", {
-  noremap = true,
-  silent = true,
-  desc = "Start Supermaven",
+  desc = "Toggle Supermaven",
 })

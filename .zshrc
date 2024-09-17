@@ -245,10 +245,10 @@ alias lg="lazygit"
 alias ldo="lazydocker"
 alias lsq="lazysql"
 
-alias o="xdg-open"
+alias o="xdg-open ."
 alias yt="ytfzf"
 
-alias qn="vim /tmp/$(uuid).md"
+alias qc="vim /tmp/$(uuid).md"
 
 alias py="python"
 
@@ -270,6 +270,26 @@ alias d="ddgr"
 alias wifi="nmtui connect"
 
 alias sssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+
+helppp() {
+  echo "==== DANIEL'S BASH ALIASES ===="
+  echo "n - nvim"
+  echo "o - xdg-open ."
+  echo "y - yazi"
+  echo "qc - quicknote"
+  echo "zconfig - edit ~/.zshrc"
+  echo "nconfig - edit ~/.config/nvim/init.lua"
+  echo "tconfig - edit ~/.config/tmux/tmux.conf"
+  echo "chatconfig - edit ~/.config/shell_gpt/.sgptrc"
+  echo "htpv - http -v"
+  echo "rmnswap - remove swap files"
+  echo "windows - cd /mnt/c/Users/Daniel"
+  echo "passmenu - passmenu -fn 'MesloLGS NF:size=14'"
+  echo "d - ddgr"
+  echo "wifi - nmtui connect"
+  echo "sssh - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+  echo "helppp - print this help"
+}
 
 # Shell integrations
 eval "$(fzf --zsh)"
