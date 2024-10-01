@@ -218,6 +218,12 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools
 
+export JAVA_HOME=/opt/jdk-23
+export PATH=$PATH:$JAVA_HOME/bin
+export PATH=$PATH:/opt/gradle/gradle-8.10.2/bin
+export PATH=$PATH:/opt/binsider-0.1.0
+export PATH=$PATH:/opt/apache-maven-3.9.9/bin
+
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
 
 export LD_LIBRARY_PATH=/usr/local/lib
@@ -245,7 +251,6 @@ alias lg="lazygit"
 alias ldo="lazydocker"
 alias lsq="lazysql"
 
-alias o="xdg-open ."
 alias yt="ytfzf"
 
 alias qc="vim /tmp/$(uuid).md"
@@ -254,6 +259,7 @@ alias py="python"
 
 alias mmi="make && make install"
 alias mcmu="make clean && make uninstall"
+alias mcmummi="make clean && make uninstall && make && make install"
 alias bm="bear -- make"
 alias bmmi="bear -- make && make install"
 
@@ -274,7 +280,6 @@ alias sssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 helppp() {
   echo "==== DANIEL'S BASH ALIASES ===="
   echo "n - nvim"
-  echo "o - xdg-open ."
   echo "y - yazi"
   echo "qc - quicknote"
   echo "zconfig - edit ~/.zshrc"
@@ -314,9 +319,9 @@ newgo() {
 doese() {
 	export PATH=$PATH:"/home/daniel/development/11dbpg/bin"
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/home/daniel/development/11dbpg/lib"
-	alias pgstart="11db_ctl -D /home/daniel/development/datadir/data1/ -l /home/daniel/development/datadir/data1/logfile start"
-	alias pgrestart="11db_ctl -D /home/daniel/development/datadir/data1/ -l /home/daniel/development/datadir/data1/logfile restart"
-	alias pgstop="11db_ctl -D /home/daniel/development/datadir/data1/ -l /home/daniel/development/datadir/data1/logfile stop"
+	alias pgstart="11db_ctl -D /home/daniel/development/datadir/ese1/ -l /home/daniel/development/datadir/ese1/logfile start"
+	alias pgrestart="11db_ctl -D /home/daniel/development/datadir/ese1/ -l /home/daniel/development/datadir/ese1/logfile restart"
+	alias pgstop="11db_ctl -D /home/daniel/development/datadir/ese1/ -l /home/daniel/development/datadir/ese1/logfile stop"
 }
 
 dopg() {
@@ -354,6 +359,53 @@ donp() {
 
 tsw() {
 	tmux swap-window -s "$1" -t "$2"
+}
+
+tjp() {
+  tmux join-pane -s "$1" -t "$2"
+}
+
+tjph() {
+  tmux join-pane -h -s "$1" -t "$2"
+}
+
+tmwr() {
+  tmux move-window -r
+}
+
+tsave() {
+  local session_name="main"
+  if ! tmux has-session -t "$session_name" 2>/dev/null; then
+    return 1
+  fi
+
+  local layout_file=${1:-~/.mytmuxlayout}
+  echo "" > "$layout_file"
+  tmux list-windows -t "$session_name" -F '#{window_index} #{window_name}' >> "$layout_file"
+  echo "Layout saved to $layout_file"
+}
+
+trestore() {
+  local session_name="main"
+  if ! tmux has-session -t "$session_name" 2>/dev/null; then
+    return 1
+  fi
+
+  local layout_file=${1:-~/.mytmuxlayout}
+  if [[ ! -f "$layout_file" ]]; then
+    return 1
+  fi
+
+  while IFS= read -r line; do
+    local window_index=$(echo "$line" | awk '{print $1}')
+    local window_name=$(echo "$line" | awk '{print $2}')
+
+    if ! tmux list-windows -t "$session_name" | grep -q "^$window_index:"; then
+      tmux new-window -t "$session_name:$window_index" -n "$window_name"
+    else
+      tmux rename-window -t "$session_name:$window_index" "$window_name"
+    fi
+  done < "$layout_file"
 }
 
 update_lazy() {
@@ -503,6 +555,14 @@ chatsh() {
     echo "Prompt: "
     read cmd
     sgpt -s "$cmd"
+  fi
+}
+
+o() {
+  if [ -f "$1" ]; then
+    xdg-open "$1"
+  else
+    xdg-open .
   fi
 }
 

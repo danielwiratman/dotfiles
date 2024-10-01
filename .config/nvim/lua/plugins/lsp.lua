@@ -19,6 +19,7 @@ return {
         dartls = {},
         prismals = {},
         basedpyright = {},
+        lemminx = {},
       },
       inlay_hints = {
         enabled = false,
