@@ -254,6 +254,7 @@ alias lsq="lazysql"
 alias yt="ytfzf"
 
 alias qc="vim /tmp/$(uuid).md"
+alias qc="n /tmp/$(uuid).md"
 
 alias py="python"
 
