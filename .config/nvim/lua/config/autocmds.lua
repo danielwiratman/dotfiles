@@ -22,3 +22,32 @@ function TmuxSplitHorizontal()
   vim.fn.system("tmux splitw -h")
 end
 vim.cmd("command! TmuxSplitHorizontal lua TmuxSplitHorizontal()")
+
+function CheckSupermaven()
+  local api = require("supermaven-nvim.api")
+  if api.is_running() then
+    print("Supermaven is running")
+  else
+    print("Supermaven is not running")
+  end
+end
+
+function RestartSupermaven()
+  local api = require("supermaven-nvim.api")
+  api.restart()
+  if api.is_running() then
+    print("Supermaven restart successful")
+  else
+    print("Supermaven restart failed")
+  end
+end
+
+function StopSupermaven()
+  local api = require("supermaven-nvim.api")
+  api.stop()
+  if not api.is_running() then
+    print("Supermaven stop successful")
+  else
+    print("Supermaven stop failed")
+  end
+end
