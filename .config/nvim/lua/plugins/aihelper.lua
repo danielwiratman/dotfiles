@@ -5,6 +5,7 @@ return {
       keymaps = {
         accept_suggestion = "<C-g>",
       },
+      log_level = "trace",
     },
   },
 }
