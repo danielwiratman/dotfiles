@@ -2,31 +2,23 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-vim.api.nvim_set_keymap("n", "<S-j>", "<cmd>lua TmuxToggleMaximize()<CR>", { noremap = true, silent = true })
+local map = vim.keymap.set
 
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>se",
-  "<cmd>ASToggle<CR>",
-  { noremap = true, silent = true, desc = "Toggle Auto Save" }
-)
+map("n", "<S-j>", "<cmd>lua TmuxToggleMaximize()<CR>", { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>ts",
-  "<cmd>lua TmuxSplitVertical()<CR>",
-  { noremap = true, silent = true, desc = "Split Vertical" }
-)
+map("n", "<leader>se", "<cmd>ASToggle<CR>", { noremap = true, silent = true, desc = "Toggle Auto Save" })
 
-vim.api.nvim_set_keymap("n", "<C-q>", "<cmd>wqa<CR>", { noremap = true, silent = true, desc = "Save and Quit" })
+map("n", "<leader>ts", "<cmd>lua TmuxSplitVertical()<CR>", { noremap = true, silent = true, desc = "Split Vertical" })
 
-vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>AerialToggle<CR> ", {
+map("n", "<C-q>", "<cmd>wqa<CR>", { noremap = true, silent = true, desc = "Save and Quit" })
+
+map("n", "<leader>a", "<cmd>AerialToggle<CR> ", {
   noremap = true,
   silent = true,
   desc = "Toggle Aerial",
 })
 
-vim.api.nvim_set_keymap("n", "<leader>ai", "<cmd>SupermavenToggle<CR>", {
+map("n", "<leader>AI", "<cmd>SupermavenToggle<CR>", {
   noremap = true,
   silent = true,
   desc = "Toggle Supermaven",

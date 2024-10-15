@@ -25,3 +25,15 @@ end
 vim.cmd("command! TmuxSplitHorizontal lua TmuxSplitHorizontal()")
 
 vim.cmd("command! GoImpl Telescope goimpl")
+
+function SupermavenStatus()
+  local api = require("supermaven-nvim.api")
+  local noice = require("noice")
+
+  if api.is_running() then
+    noice.notify("Supermaven is running", "INFO")
+  else
+    noice.notify("Supermaven is stopped", "INFO")
+  end
+end
+vim.cmd("command! SupermavenStatus lua SupermavenStatus()")
