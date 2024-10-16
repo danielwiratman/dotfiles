@@ -36,7 +36,7 @@ map("n", "<leader>ax", "<cmd>lua StopSupermaven()<CR>", {
   desc = "Stop Supermaven",
 })
 
-map("n", "<leader>Rr", "<cmd>Rest run<CR>", {
+map("n", "<leader>Rr", "<cmd>lua require('kulala').run()<CR>", {
   noremap = true,
   silent = true,
   desc = "Execute API Call",

@@ -22,3 +22,9 @@ end
 vim.g.root_spec = { "cwd" }
 
 vim.opt.list = false
+
+vim.filetype.add({
+  extension = {
+    ["http"] = "http",
+  },
+})
