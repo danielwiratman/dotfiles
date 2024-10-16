@@ -35,3 +35,9 @@ map("n", "<leader>ax", "<cmd>lua StopSupermaven()<CR>", {
   silent = true,
   desc = "Stop Supermaven",
 })
+
+map("n", "<leader>Rr", "<cmd>Rest run<CR>", {
+  noremap = true,
+  silent = true,
+  desc = "Execute API Call",
+})

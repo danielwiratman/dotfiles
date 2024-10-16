@@ -20,4 +20,5 @@ if vim.fn.has("win32unix") == 1 or vim.fn.has("win64unix") == 1 then
 end
 
 vim.g.root_spec = { "cwd" }
+
 vim.opt.list = false
