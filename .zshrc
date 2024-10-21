@@ -317,6 +317,39 @@ newgo() {
 	echo "New Go module '$module_name' created with main.go"
 }
 
+newleet() {
+  if [ $# -eq 0 ]; then
+    echo "Usage: newleet <problem_number> <problem_url>"
+    return 1
+  fi
+
+  local problem_number=$1
+  local problem_url=$2
+
+  problem_title=$(echo "$problem_url" | awk -F'/' '{print $5}')
+
+  dir_name="${problem_number}-${problem_title}"
+  mkdir -p "$dir_name"
+
+  cat <<EOL >"$dir_name/main.cpp"
+#include <vector>
+#include <string>
+#include <logger.h>
+
+using namespace std;
+
+auto &l = Logger::get();
+
+
+
+int main() {
+  l.INFO(Solution());
+}
+EOL
+
+  cd "$dir_name"
+}
+
 doese() {
 	export PATH=$PATH:"/home/daniel/development/11dbpg/bin"
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/home/daniel/development/11dbpg/lib"
