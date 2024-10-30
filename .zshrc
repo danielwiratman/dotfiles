@@ -335,6 +335,7 @@ newleet() {
 #include <vector>
 #include <string>
 #include <logger.h>
+#include <dwlc.h>
 
 using namespace std;
 
