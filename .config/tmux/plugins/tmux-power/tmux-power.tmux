@@ -107,7 +107,7 @@ tmux_set status-left-bg "$G04"
 tmux_set status-left-fg "$G12"
 tmux_set status-left-length 150
 user=$(whoami)
-ip=$(ip -4 addr show wlp2s0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+ip=$(ip -4 addr show wlp1s0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 LS="#[fg=$TC,bg=$G06] $session_icon #S "
 if "$show_upload_speed"; then
   LS="$LS#[fg=$G06,bg=$G05]$rarrow#[fg=$TC,bg=$G05] $upload_speed_icon #{upload_speed} #[fg=$G05,bg=$BG]$rarrow"
