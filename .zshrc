@@ -107,7 +107,10 @@ if [ ! -f ~/.gitconfig ]; then
   colorMoved = default
 
 [credential]
-	helper = store" > ~/.gitconfig
+	helper = store
+
+[pull]
+  rebase = false" > ~/.gitconfig
 fi
 
 # if secrets.sh not exists, create it

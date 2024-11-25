@@ -41,3 +41,15 @@ map("n", "<leader>Rr", "<cmd>lua require('kulala').run()<CR>", {
   silent = true,
   desc = "Execute API Call",
 })
+
+map("n", "<leader>Rh", "<cmd>lua require('kulala').toggle_view()<CR>", {
+  noremap = true,
+  silent = true,
+  desc = "Toggles body and header view",
+})
+
+map("n", "<leader>Rq", "<cmd>lua require('kulala').close()<CR>", {
+  noremap = true,
+  silent = true,
+  desc = "Close the current Kulala buffer",
+})
