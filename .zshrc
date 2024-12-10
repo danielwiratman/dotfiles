@@ -216,7 +216,7 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools
 
-export JAVA_HOME=/opt/jdk-23
+export JAVA_HOME=/usr/lib/jvm/jdk-17.0.12-oracle-x64
 export PATH=$PATH:$JAVA_HOME/bin
 export PATH=$PATH:/opt/gradle/gradle-8.10.2/bin
 export PATH=$PATH:/opt/binsider-0.1.0
@@ -265,6 +265,7 @@ alias bmmi="bear -- make && make install"
 alias zconfig="n ~/.zshrc && source ~/.zshrc"
 alias nconfig="cd ~/.config/nvim && n init.lua"
 alias tconfig="cd ~/.config/tmux && n tmux.conf"
+alias kittyconfig="cd ~/.config/kitty && n kitty.conf"
 alias chatconfig="cd ~/.config/shell_gpt && n .sgptrc"
 alias htpv="http -v"
 alias rmnswap="rm -rf /home/daniel/.local/state/nvim/swap/*"
