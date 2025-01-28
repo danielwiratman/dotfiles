@@ -32,11 +32,11 @@ if [ ! -f "$HOME/miniconda3/bin/conda" ]; then
   rm Miniconda3-latest-Linux-x86_64.sh
 fi
 
-if [ ! -f "$HOME/.config/nvm/nvm.sh" ]; then
+export NVM_DIR="$HOME/.nvm"
+if [ ! -f "$NVM_DIR/nvm.sh" ]; then
   echo "Installing nvm..."
   LATEST_NVM_VERSION=$(curl -s "https://api.github.com/repos/nvm-sh/nvm/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v${LATEST_NVM_VERSION}/install.sh | bash
-  export NVM_DIR="$HOME/.config/nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   nvm install --lts
   nvm use --lts
@@ -367,7 +367,7 @@ dopg() {
 }
 
 donode() {
-  export NVM_DIR="$HOME/.config/nvm"
+  export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 }
@@ -569,26 +569,6 @@ grayscale() {
   else
     feh --bg-fill $HOME/wallpapers/black.jpg
     touch /tmp/grayscale
-  fi
-}
-
-chat() {
-  dopy
-  if [ -n "$1" ]; then
-    sgpt --repl "$1"
-  else
-    sgpt --repl temp
-  fi
-}
-
-chatsh() {
-  dopy
-  if [ -n "$1" ]; then
-    sgpt -s "$1"
-  else
-    echo "Prompt: "
-    read cmd
-    sgpt -s "$cmd"
   fi
 }
 
