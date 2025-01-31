@@ -580,6 +580,59 @@ o() {
   fi
 }
 
+extract() {
+    if [ -z "$1" ]; then
+        echo "Usage: extract <archive_file>"
+        return 1
+    fi
+
+    FILE="$1"
+
+    if [ ! -f "$FILE" ]; then
+        echo "File '$FILE' not found!"
+        return 1
+    fi
+
+    EXT="${FILE##*.}"
+    DIR_NAME="${FILE%%.*}"
+
+    echo "=== WELCOME to Daniel's Extractor ==="
+    echo "File Extension is $EXT"
+
+    if [ "$EXT" = "zip" ]; then
+        unzip -q "$FILE" -d "$DIR_NAME"
+        if [ "$(ls -A "$DIR_NAME")" ]; then
+            echo "Extracted to '$DIR_NAME/'"
+        else
+            echo "No files extracted."
+            rmdir "$DIR_NAME"
+        fi
+    elif [[ "$EXT" = "tar" || "$EXT" = "gz" || "$EXT" = "bz2" ]]; then
+        mkdir -p "$DIR_NAME"
+        if [[ "$EXT" = "gz" ]]; then
+            pv "$FILE" | tar -xzf - -C "$DIR_NAME"
+        elif [[ "$EXT" = "bz2" ]]; then
+            pv "$FILE" | tar -xjf - -C "$DIR_NAME"
+        else
+            pv "$FILE" | tar -xf - -C "$DIR_NAME"
+        fi
+    else
+        echo "Unsupported file type: '$FILE'"
+        return 1
+    fi
+
+    if [ "$(find "$DIR_NAME" -mindepth 1 -maxdepth 1 -type d | wc -l)" -eq 1 ]; then
+        SINGLE_ITEM=$(find "$DIR_NAME" -mindepth 1 -maxdepth 1)
+        mv "$SINGLE_ITEM" .
+        rmdir $DIR_NAME
+        echo "Extracted to $(basename $SINGLE_ITEM)"
+    else
+        echo "Extracted to $DIR_NAME"
+    fi
+
+    echo "Have a good day!"
+}
+
 [ -s "/home/daniel/.bun/_bun" ] && source "/home/daniel/.bun/_bun"
 
 export BUN_INSTALL="$HOME/.bun"
