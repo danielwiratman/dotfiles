@@ -572,6 +572,15 @@ grayscale() {
   fi
 }
 
+chat() {
+  dopy
+  if [ -n "$1" ]; then
+    sgpt --repl "$1"
+  else
+    sgpt --repl temp
+  fi
+}
+
 o() {
   if [ -f "$1" ]; then
     xdg-open "$1"
