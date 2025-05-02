@@ -36,8 +36,5 @@ USER root
 
 RUN apt-get install -y vim nano pkg-config build-essential dumb-init iproute2 iputils-ping net-tools
 
-# ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-# CMD ["bash", "-c", "/usr/sbin/sshd -D"]
-
 ENTRYPOINT ["/usr/bin/dumb-init"]
 CMD ["bash"]

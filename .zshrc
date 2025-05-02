@@ -208,7 +208,7 @@ export PATH=$PATH:~/go/bin
 export PATH=$PATH:/opt/nvim
 export PATH=$PATH:/opt/resolve/bin
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/usr/bin/flutter/bin
+export PATH=$PATH:~/development/flutter/bin
 export PATH=$PATH:/usr/bin/android-studio/bin
 
 export ANDROID_HOME=$HOME/Android/Sdk
@@ -216,11 +216,13 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools
 
-export JAVA_HOME=/usr/lib/jvm/jdk-17.0.12-oracle-x64
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 export PATH=$PATH:$JAVA_HOME/bin
 export PATH=$PATH:/opt/gradle/gradle-8.10.2/bin
 export PATH=$PATH:/opt/binsider-0.1.0
 export PATH=$PATH:/opt/apache-maven-3.9.9/bin
+
+export PATH=$PATH:/opt/doxygen-1.13.2/bin
 
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
 
@@ -276,6 +278,7 @@ alias d="ddgr"
 alias wifi="nmtui connect"
 
 alias sssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+alias qrcp="$HOME/miniconda3/bin/python $HOME/development/qrwebcamtoclipboard/main.py"
 
 helppp() {
   echo "==== DANIEL'S BASH ALIASES ===="
