@@ -44,9 +44,10 @@ fi
 
 if [ ! -f /usr/bin/nvim ]; then
   echo "Installing nvim..."
-  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-  chmod u+x nvim.appimage
-  sudo mv nvim.appimage /usr/bin/nvim
+  LATEST_NEOVIM_VERSION=$(curl -s "https://api.github.com/repos/neovim/neovim/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+  curl -LO https://github.com/neovim/neovim/releases/download/v${LATEST_NEOVIM_VERSION}/nvim-linux-x86_64.appimage
+  chmod u+x nvim-linux-x86_64.appimage
+  sudo mv nvim-linux-x86_64.appimage /usr/bin/nvim
 fi
 
 if [ ! -f /usr/bin/delta ]; then
