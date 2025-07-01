@@ -1,94 +1,60 @@
 # Daniel W's Dotfiles
 
-Makes it easy to setup new machines, or reinstalling new OS, and get right back to work.
+A modular dotfiles setup for quick and efficient system configuration.
 
-The zshrc will:
-1. Automatically install if not exist the latest versions of  
-  a. Lazydocker  
-  b. Lazygit  
-  c. Golang Compiler  
-  d. Miniconda with latest Python  
-  e. NVM and install and use Node LTS  
-  f. Neovim  
-  g. Git delta  
-  h. Yazi (Terminal File Explorer)  
-  i. Fzf  
-  j. Lazysql  
-  Everything will be installed from github source to get the latest release, because apt package's version tends to be left behind too much. 
-2. Apply Git delta to .gitconfig
-3. Install zsh plugins and snippets using zinit, including fzf-tab, zsh-completions and autosuggestions, fast-syntax-highlting. Snippets from Oh My Zsh
-4. Install powerlevel10k
-5. A lot of my custom functions and aliases
+## Features
 
-My Neovim:
-1. Based on Lazyvim, with a lot of extra plugins
+- **Modular ZSH Configuration**: Organized into separate files for better maintainability
+- **Auto-Installation**: Automatically installs latest versions of essential tools
+  - Lazydocker, Lazygit, Golang, Miniconda, NVM, Neovim, Git delta, Yazi, Fzf, Lazysql
+- **Plugin Management**: Uses Zinit for ZSH plugins and snippets
+- **Custom Configuration**: Includes Neovim (Lazyvim-based) and Tmux with clipboard integration
 
-My Tmux Config:
-1. Very nice clipboard integration with WSL2, and regular xclip because i do use both WSL and native Linux
+## Installation
 
-## Instruction
-1. Clone
-2. Stow
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/danielwiratman/dotfiles.git ~/dotfiles
+   ```
 
-## Additional Conditional Files Template/Cheatsheet
+2. **Run the ZSH installer**:
+   ```bash
+   cd ~/dotfiles/zsh
+   ./install.sh
+   ```
 
-### ~/.clangd
-```yaml
-CompileFlags:
-  Add:
-    - "-Iinclude"
-```
+3. **Restart your terminal** or run:
+   ```bash
+   source ~/.zshrc
+   ```
 
-### ~/.gitconfig
-```toml
-[user]
-	email = danielwiratman@gmail.com
-	name = Daniel Wiratman
+## Additional Configuration
 
-[core]
-  longpaths = true
-  pager = delta
+### Configuration Files
+The following files will be automatically created if they don't exist:
 
-[interactive]
-  diffFilter = delta --color-only
+- **~/.gitconfig**: Git configuration with delta integration
+- **~/secrets.sh**: For storing API keys and private aliases
 
-[delta]
-  navigate = true
+### Customization
 
-[merge]
-  conflictstyle = diff3
+To modify your ZSH configuration:
+- Edit files in the appropriate subdirectory under `~/dotfiles/zsh/`
+- For aliases: `aliases/aliases.zsh`
+- For functions: `functions/functions.zsh`
+- For paths: `exports/paths.zsh`
 
-[diff]
-  colorMoved = default
-```
+## Arch Linux Specific Setup
 
-### secrets.sh
-```bash 
-export OPENAI_API_KEY=
+For Arch Linux users, there are additional configurations available:
 
-alias conndo="sshpass -p 123123 ssh -p 22 daniel@example.com"
-```
-
-
-### Polkit rules for DWM thunar automount
-`cat /etc/polkit-1/rules.d/10-udisks2.rules`
-```
-polkit.addRule(function(action, subject) {
-    if ((action.id == "org.freedesktop.udisks2.filesystem-mount-system" ||
-         action.id == "org.freedesktop.udisks2.filesystem-mount") &&
-        subject.isInGroup("storage")) {
-        return polkit.Result.YES;
-    }
-});
-```
-
-Not Yet Integrated: Install flutter and android studio
-
-### If use arch install these
+### System Packages
+```bash
 paru -S sshpass ueberzug ytfzf imv mpv zathura-pdf-mupdf qpwgraph peazip cups system-config-printer clang cmake ninja google-chrome code thunderbird dnsutils redshift ddgr avahi nss-mdns wmname paru ibus ibus-autostart ibus-daemon ibus-libpinyin
+```
 
-### Change natural scrolling for touchpad in arch
-/etc/X11/xorg.conf.d/30-touchpad.conf
+### Touchpad Configuration
+Create file at `/etc/X11/xorg.conf.d/30-touchpad.conf`:
 ```
 Section "InputClass"
         Identifier "devname"
@@ -99,31 +65,14 @@ Section "InputClass"
 EndSection
 ```
 
+### Yazi Theme
+```bash
 git clone https://github.com/BennyOe/onedark.yazi.git ~/.config/yazi/flavors/onedark.yazi
-
-Add this to /etc/nsswitch.conf
-```
-hosts: files mdns_minimal [NOTFOUND=return] dns
 ```
 
-Add this to /etc/avahi/avahi-daemon.conf
-```
-[server]
-host-name=daniel
-...
-publish-workstation=yes
-```
+### Network Configuration
+For hostname resolution, update `/etc/nsswitch.conf` and `/etc/avahi/avahi-daemon.conf`.
 
-Update Pacman Mirrorlist
-```
-sudo reflector --country Indonesia --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist --connection-timeout 30
-```
-
-Docker Hosts Updater
-```
-docker run -d --restart=always \
-    --name docker-hosts-updater \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -v /etc/hosts:/opt/hosts \
-    grachevko/docker-hosts-updater
-```
+### Utilities
+- Update Pacman mirrors: `sudo reflector --country Indonesia --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist`
+- Docker Hosts Updater is available for container hostname resolution
