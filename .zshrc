@@ -224,6 +224,7 @@ export PATH=$PATH:/opt/binsider-0.1.0
 export PATH=$PATH:/opt/apache-maven-3.9.9/bin
 
 export PATH=$PATH:/opt/doxygen-1.13.2/bin
+export PATH=$PATH:/opt/scrcpy
 
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
 
@@ -245,6 +246,7 @@ alias l="ls -ltrah"
 alias tree="tree -a"
 
 alias n="nvim"
+alias c="cursor ."
 alias no="cd ~/my-vault && n main.md"
 alias nod="cd ~/my-vault && n 01\ Daily\ Notes/$(date +'%Y-%m-%d').md"
 
@@ -318,6 +320,34 @@ newgo() {
 		go mod init "$module_name" &&
 		printf '%s\n' "package main" '' "import \"fmt\"" '' "func main() {" "    fmt.Println(\"Hello, $module_name!\")" "}" >main.go
 	echo "New Go module '$module_name' created with main.go"
+}
+
+newleetpy() {
+  if [ $# -eq 0 ]; then
+    echo "Usage: newleetpy <problem_number> <problem_url>"
+    return 1
+  fi
+
+  local problem_number=$1
+  local problem_url=$2
+
+  problem_title=$(echo "$problem_url" | awk -F'/' '{print $5}')
+
+  dir_name="${problem_number}-${problem_title}"
+  mkdir -p "$dir_name"
+
+  cat <<EOL >"$dir_name/main.py"
+class Solution:
+    def solve(self):
+        pass
+
+
+if __name__ == "__main__":
+    s = Solution()
+    print(s.solve())
+EOL
+
+  cd "$dir_name"
 }
 
 newleet() {
