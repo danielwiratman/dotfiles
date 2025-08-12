@@ -1,5 +1,0 @@
-[[database]]
-Name = 'Local ESE'
-Provider = 'postgres'
-DBName = 'dbone'
-URL = 'postgres://dbone:dbone@127.0.0.1:1108/dbone?sslmode=disable'

@@ -2,7 +2,7 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
-if vim.fn.has("win32unix") == 1 or vim.fn.has("win64unix") == 1 then
+if vim.fn.has("wsl") == 1 then
   vim.o.clipboard = "unnamedplus"
 
   vim.g.clipboard = {
@@ -23,8 +23,4 @@ vim.g.root_spec = { "cwd" }
 
 vim.opt.list = false
 
-vim.filetype.add({
-  extension = {
-    ["http"] = "http",
-  },
-})
+vim.g.snacks_animate = false
