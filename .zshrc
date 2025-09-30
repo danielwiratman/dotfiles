@@ -351,10 +351,11 @@ t() {
   fi
 }
 
-
 [ -s "/home/daniel/.bun/_bun" ] && source "/home/daniel/.bun/_bun"
 
-[ -s "/etc/profile.d/rvm.sh" ] && source "/etc/profile.d/rvm.sh"
+[ -s "$HOME/.rbenv/bin/rbenv" ] && eval "$(~/.rbenv/bin/rbenv init - --no-rehash zsh)"
+[ -s "$HOME/.rbenv/completions" ] && FPATH=~/.rbenv/completions:"$FPATH"
+autoload -U compinit && compinit
 
 donp
 
