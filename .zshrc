@@ -88,7 +88,7 @@ bindkey "^[[1;5D" backward-word
 # ALIASES - Fast and simple
 # ===================================================================
 
-alias ls='ls --color' l='ls -ltrah' lg='lazygit' ldo='lazydocker' py='python' n='nvim .'
+alias ls='ls --color' l='ls -ltrah' lg='lazygit' ldo='lazydocker' py='python' n='nvim'
 alias mmi='make && make install' mcmu='make clean && make uninstall' 
 alias mcmummi='make clean && make uninstall && make && make install'
 alias bm='bear -- make' bmmi='bear -- make && make install' rm='trash'
