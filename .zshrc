@@ -121,11 +121,13 @@ alias mcmu="make clean && make uninstall"
 alias mcmummi="make clean && make uninstall && make && make install"
 alias bm="bear -- make"
 alias bmmi="bear -- make && make install"
-alias zconfig="vim ~/.zshrc && source ~/.zshrc"
+alias zconfig="nvim ~/.zshrc && source ~/.zshrc"
+alias secconfig="vim ~/secrets.sh && source ~/secrets.sh"
 alias tconfig="cd ~/.config/tmux && vim tmux.conf"
 alias kittyconfig="cd ~/.config/kitty && vim kitty.conf"
 alias nvimconfig="cd ~/.config/nvim && nvim ."
 alias chat="sgpt --repl temp"
+alias rm="trash"
 
 bindkey -e
 bindkey '^p' history-search-backward
@@ -196,6 +198,7 @@ export PATH=$PATH:/opt/resolve/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/development/flutter/bin
 export PATH=$PATH:/usr/bin/android-studio/bin
+export PATH=$PATH:~/.yarn/bin
 
 # Android SDK paths
 export ANDROID_HOME=$HOME/Android/Sdk
@@ -350,6 +353,8 @@ t() {
 
 
 [ -s "/home/daniel/.bun/_bun" ] && source "/home/daniel/.bun/_bun"
+
+[ -s "/etc/profile.d/rvm.sh" ] && source "/etc/profile.d/rvm.sh"
 
 donp
 
