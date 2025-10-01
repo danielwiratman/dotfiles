@@ -24,3 +24,5 @@ vim.g.root_spec = { "cwd" }
 vim.opt.list = false
 
 vim.g.snacks_animate = false
+
+vim.g.lazyvim_ruby_lsp = "solargraph"

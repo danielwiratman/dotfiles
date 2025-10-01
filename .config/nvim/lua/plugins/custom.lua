@@ -116,4 +116,36 @@ return {
     "mason-org/mason.nvim",
     opts = { ensure_installed = { "emmet-language-server" } },
   },
+  {
+    "akinsho/toggleterm.nvim",
+    cmd = "ToggleTerm",
+    keys = {
+      { "<C-\\>", "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+      {
+        "<leader>th",
+        function()
+          require("toggleterm").toggle(0, 10, vim.loop.cwd(), "horizontal")
+        end,
+        desc = "Term horizontal",
+      },
+      {
+        "<leader>tv",
+        function()
+          require("toggleterm").toggle(0, 0, vim.loop.cwd(), "vertical")
+        end,
+        desc = "Term vertical",
+      },
+      {
+        "<leader>tf",
+        function()
+          require("toggleterm").toggle(0, 0, vim.loop.cwd(), "float")
+        end,
+        desc = "Term float",
+      },
+    },
+    opts = {
+      open_mapping = [[<C-\>]],
+      direction = "horizontal",
+    },
+  },
 }

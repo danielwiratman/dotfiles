@@ -4,10 +4,6 @@
 
 local map = vim.keymap.set
 
-map("n", "<S-j>", "<cmd>lua TmuxToggleMaximize()<CR>", { noremap = true, silent = true })
-
-map("n", "<leader>ts", "<cmd>lua TmuxSplitVertical()<CR>", { noremap = true, silent = true, desc = "Split Vertical" })
-
 map("n", "<leader>aa", "<cmd>AerialToggle<CR> ", {
   noremap = true,
   silent = true,
@@ -31,3 +27,15 @@ map("n", "<leader>Rq", "<cmd>lua require('kulala').close()<CR>", {
   silent = true,
   desc = "Close the current Kulala buffer",
 })
+
+-- Normal mode mappings
+vim.keymap.del("n", "<leader>fT")
+vim.keymap.del("n", "<leader>ft")
+vim.keymap.del("n", "<c-/>")
+vim.keymap.del("n", "<c-_>")
+
+-- Terminal mode mappings
+vim.keymap.del("t", "<c-/>")
+vim.keymap.del("t", "<c-_>")
+
+map("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
