@@ -24,3 +24,7 @@ vim.g.root_spec = { "cwd" }
 vim.opt.list = false
 
 vim.g.snacks_animate = false
+
+vim.g.no_sixel = true
+
+vim.g.image_backend = "none"
