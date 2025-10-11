@@ -1,0 +1,14 @@
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/sudo
+ohmyzsh/ohmyzsh path:plugins/command-not-found
+
+zsh-users/zsh-autosuggestions
+zdharma-continuum/fast-syntax-highlighting
+zsh-users/zsh-completions
+Aloxaf/fzf-tab
+sindresorhus/pure
+
+hlissner/zsh-autopair
+MichaelAquilina/zsh-you-should-use
+Tarrasch/zsh-bd
+zdharma-continuum/history-search-multi-word

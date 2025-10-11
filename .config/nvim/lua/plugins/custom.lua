@@ -13,6 +13,9 @@ return {
             },
           },
         },
+        ruby_lsp = {
+          cmd = { "bundle", "exec", "ruby-lsp" },
+        },
       },
       inlay_hints = {
         enabled = false,
@@ -114,7 +117,7 @@ return {
   },
   {
     "mason-org/mason.nvim",
-    opts = { ensure_installed = { "emmet-language-server" } },
+    opts = { ensure_installed = { "emmet-language-server", "tailwindcss-language-server" } },
   },
   {
     "akinsho/toggleterm.nvim",
