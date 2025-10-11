@@ -92,6 +92,7 @@ alias lg='lazygit'
 alias ldo='lazydocker'
 alias n='nvim'
 alias py='python'
+alias t='tmux new-session -A -s main'
 
 # Build helpers
 alias mmi='make && make install'
