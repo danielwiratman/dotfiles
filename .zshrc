@@ -14,6 +14,7 @@ HISTFILE="$HOME/.zsh_history"
 export ANDROID_HOME="$HOME/Android/Sdk"
 export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
 export TERM="xterm-256color"
+export EDITOR="nvim"
 
 # --- PATH Management ---
 pathadd() {
@@ -111,6 +112,7 @@ alias nvimconfig='cd ~/.config/nvim && nvim .'
 # Misc
 alias rm='trash'
 alias chat='sgpt --repl temp'
+alias quicknote='touch $HOME/quicknotes/$(date +"%Y-%m-%d").md && cd quicknotes && nvim $(date +"%Y-%m-%d").md'
 
 # ===================================================================
 # COMPLETIONS
@@ -118,6 +120,10 @@ alias chat='sgpt --repl temp'
 
 if (( $+commands[docker] )); then
   source <(docker completion zsh)
+fi
+
+if (( $+commands[codex] )); then
+  source <(codex completion zsh)
 fi
 
 autoload -Uz compinit
