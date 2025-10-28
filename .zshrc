@@ -126,6 +126,10 @@ if (( $+commands[codex] )); then
   source <(codex completion zsh)
 fi
 
+if (( $+commands[hugo] )); then
+  source <(hugo completion zsh)
+fi
+
 autoload -Uz compinit
 compinit -d ~/.cache/zcompdump
 
