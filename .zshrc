@@ -12,7 +12,14 @@ HISTFILE="$HOME/.zsh_history"
 # ===================================================================
 
 export ANDROID_HOME="$HOME/Android/Sdk"
-export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+
+if command -v asdf >/dev/null 2>&1; then
+  export JAVA_HOME=$(asdf where java 2>/dev/null || echo "")
+  if [[ -n "$JAVA_HOME" ]]; then
+    export PATH="$JAVA_HOME/bin:$PATH"
+  fi
+fi
+
 export TERM="xterm-256color"
 export EDITOR="nvim"
 
@@ -28,6 +35,10 @@ local paths=(
   $HOME/.local/bin
   /opt/bin
   ${ASDF_DATA_DIR:-$HOME/.asdf}/shims
+  $HOME/develop/flutter/bin
+  /opt/mssql-tools18/bin
+  $HOME/vcpkg
+  $HOME/cmake-4.1.2-linux-x86_64/bin/
 )
 
 pathadd "${paths[@]}"
@@ -54,7 +65,7 @@ prompt pure
 # ASDF (Version Manager)
 # ===================================================================
 
-if [[ -s "/opt/bin/asdf" ]]; then
+if [[ -s "/usr/local/bin/asdf" ]]; then
   mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
   asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
   fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
@@ -137,11 +148,11 @@ compinit -d ~/.cache/zcompdump
 # FUNCTIONS
 # ==================================================================
 dopg() {                                                                     
-  export PATH="/home/daniel/development/pg/bin:$PATH"                        
-  export LD_LIBRARY_PATH="/home/daniel/development/pg/lib:$LD_LIBRARY_PATH"  
-  alias pgstart="pg_ctl -D /home/daniel/development/datadir/data1/ -l /home/daniel/development/datadir/data1/logfile start"                        
-  alias pgrestart="pg_ctl -D /home/daniel/development/datadir/data1/ -l /home/daniel/development/datadir/data1/logfile restart"                      
-  alias pgstop="pg_ctl -D /home/daniel/development/datadir/data1/ -l /home/daniel/development/datadir/data1/logfile stop"                         
+  export PATH="/home/daniel/develop/pg/bin:$PATH"                        
+  export LD_LIBRARY_PATH="/home/daniel/develop/pg/lib:$LD_LIBRARY_PATH"  
+  alias pgstart="pg_ctl -D /home/daniel/develop/pgdata/1/ -l /home/daniel/develop/pgdata/1/logfile start"                        
+  alias pgrestart="pg_ctl -D /home/daniel/develop/pgdata/1/ -l /home/daniel/develop/pgdata/1/logfile restart"                      
+  alias pgstop="pg_ctl -D /home/daniel/develop/pgdata/1/ -l /home/daniel/develop/pgdata/1/logfile stop"                         
 }
 
 newgo() {
