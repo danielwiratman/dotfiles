@@ -144,6 +144,17 @@ fi
 autoload -Uz compinit
 compinit -d ~/.cache/zcompdump
 
+autoload -Uz bashcompinit
+bashcompinit
+
+if (( $+commands[aws_completer] )); then
+  complete -C aws_completer aws
+fi
+
+if (( $+commands[terraform] )); then
+  complete -o nospace -C /usr/bin/terraform terraform
+fi
+
 # ===================================================================
 # FUNCTIONS
 # ==================================================================
@@ -165,7 +176,9 @@ newgo() {
     && echo "New Go module '$m' created"
 }
 
-
+remove-nvim-swap-files() {
+  rm -rf ~/.local/state/nvim/swap/*
+}
 
 # ===================================================================
 # LOAD SECRETS
