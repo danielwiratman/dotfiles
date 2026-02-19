@@ -32,13 +32,14 @@ pathadd() {
 }
 
 local paths=(
-  $HOME/.local/bin
-  /opt/bin
   ${ASDF_DATA_DIR:-$HOME/.asdf}/shims
+  $HOME/.local/bin
+  $HOME/.opencode/bin
   $HOME/develop/flutter/bin
-  /opt/mssql-tools18/bin
   $HOME/vcpkg
   $HOME/cmake-4.1.2-linux-x86_64/bin/
+  /opt/bin
+  /opt/mssql-tools18/bin
 )
 
 pathadd "${paths[@]}"
@@ -104,7 +105,7 @@ alias lg='lazygit'
 alias ldo='lazydocker'
 alias n='nvim'
 alias py='python'
-alias t='tmux new-session -A -s main'
+alias t='tmux'
 
 # Build helpers
 alias mmi='make && make install'
@@ -196,6 +197,3 @@ remove-nvim-swap-files() {
 # ===================================================================
 
 [[ -f ~/secrets.sh ]] && source ~/secrets.sh
-
-# opencode
-export PATH=/home/daniel/.opencode/bin:$PATH
