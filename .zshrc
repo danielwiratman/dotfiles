@@ -141,6 +141,14 @@ if (( $+commands[hugo] )); then
   source <(hugo completion zsh)
 fi
 
+if (( $+commands[kind] )); then
+  source <(kind completion zsh)
+fi
+
+if (( $+commands[kubectl] )); then
+  source <(kubectl completion zsh)
+fi
+
 autoload -Uz compinit
 compinit -d ~/.cache/zcompdump
 
@@ -180,8 +188,14 @@ remove-nvim-swap-files() {
   rm -rf ~/.local/state/nvim/swap/*
 }
 
+## RUST
+. "$HOME/.cargo/env"
+
 # ===================================================================
 # LOAD SECRETS
 # ===================================================================
 
 [[ -f ~/secrets.sh ]] && source ~/secrets.sh
+
+# opencode
+export PATH=/home/daniel/.opencode/bin:$PATH
