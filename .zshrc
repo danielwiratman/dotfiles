@@ -12,6 +12,9 @@ HISTFILE="$HOME/.zsh_history"
 # ===================================================================
 
 export ANDROID_HOME="$HOME/Android/Sdk"
+export CAPACITOR_ANDROID_STUDIO_PATH="/mnt/c/Program Files/Android/Android Studio/bin/studio64.exe"
+export ADB="/mnt/c/Android/Sdk/platform-tools/adb.exe"
+export EMULATOR="/mnt/c/Android/Sdk/emulator/emulator.exe"
 
 if command -v asdf >/dev/null 2>&1; then
   export JAVA_HOME=$(asdf where java 2>/dev/null || echo "")
@@ -105,7 +108,6 @@ alias lg='lazygit'
 alias ldo='lazydocker'
 alias n='nvim'
 alias py='python'
-alias t='tmux'
 
 # Build helpers
 alias mmi='make && make install'
@@ -125,6 +127,8 @@ alias nvimconfig='cd ~/.config/nvim && nvim .'
 alias rm='trash'
 alias chat='sgpt --repl temp'
 alias quicknote='touch $HOME/quicknotes/$(date +"%Y-%m-%d").md && cd quicknotes && nvim $(date +"%Y-%m-%d").md'
+alias adb=$ADB
+alias emulator=$EMULATOR
 
 # ===================================================================
 # COMPLETIONS
@@ -188,6 +192,37 @@ newgo() {
 remove-nvim-swap-files() {
   rm -rf ~/.local/state/nvim/swap/*
 }
+
+t() {
+    local selected=$( (tmux list-sessions -F "#{session_name}" 2>/dev/null; echo " New Session") | fzf --reverse --height=40% )
+    [[ -z "$selected" ]] && return
+
+    if [[ "$selected" == " New Session" ]]; then
+        printf "Enter Session Name: "
+        read session_name
+        [[ -z "$session_name" ]] && return
+
+        printf "Enter Window Name: "
+        read window_name
+        [[ -z "$window_name" ]] && window_name="main"
+
+        tmux new-session -ds "$session_name" -n "$window_name"
+        selected="$session_name"
+    fi
+
+    if [[ -n "$TMUX" ]]; then
+        tmux switch-client -t "$selected"
+    else
+        tmux attach-session -t "$selected"
+    fi
+}
+
+_t_completion() {
+  local -a sessions
+  sessions=($(tmux list-sessions -F "#{session_name}" 2>/dev/null))
+  compadd -a sessions
+}
+compdef _t_completion t
 
 ## RUST
 . "$HOME/.cargo/env"
