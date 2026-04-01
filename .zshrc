@@ -224,6 +224,10 @@ _t_completion() {
 }
 compdef _t_completion t
 
+notify-send() {
+    wsl-notify-send.exe --category "$1" "$2"
+}
+
 ## RUST
 . "$HOME/.cargo/env"
 
