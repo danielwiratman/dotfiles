@@ -178,4 +178,17 @@ return {
       })
     end,
   },
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    keys = {
+      {
+        "<leader><CR>",
+        "vip<Plug>(DBUI_ExecuteQuery)",
+        mode = "n",
+        remap = true,
+        ft = { "sql", "mysql", "plsql" },
+        desc = "Execute Paragraph as Query",
+      },
+    },
+  },
 }
