@@ -42,7 +42,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "github_dark",
     },
   },
   {
@@ -191,4 +191,6 @@ return {
       },
     },
   },
+
+  { "projekt0n/github-nvim-theme", name = "github-theme" },
 }
