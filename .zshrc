@@ -15,6 +15,7 @@ export ANDROID_HOME="$HOME/Android/Sdk"
 export CAPACITOR_ANDROID_STUDIO_PATH="/mnt/c/Program Files/Android/Android Studio/bin/studio64.exe"
 export ADB="/mnt/c/Android/Sdk/platform-tools/adb.exe"
 export EMULATOR="/mnt/c/Android/Sdk/emulator/emulator.exe"
+export KUBECONFIG="$HOME/.kube/aws-config"
 
 if command -v asdf >/dev/null 2>&1; then
   export JAVA_HOME=$(asdf where java 2>/dev/null || echo "")
@@ -37,6 +38,7 @@ pathadd() {
 local paths=(
   ${ASDF_DATA_DIR:-$HOME/.asdf}/shims
   $HOME/.local/bin
+  $HOME/.asdf/installs/python/3.14.6/bin
   $HOME/.opencode/bin
   $HOME/develop/flutter/bin
   $HOME/vcpkg
@@ -144,6 +146,10 @@ fi
 
 if (( $+commands[hugo] )); then
   source <(hugo completion zsh)
+fi
+
+if (( $+commands[clab] )); then
+  source <(clab completion zsh)
 fi
 
 if (( $+commands[kind] )); then
