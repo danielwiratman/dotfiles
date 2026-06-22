@@ -32,4 +32,5 @@ vim.g.image_backend = "none"
 vim.g.dbs = {
   m76 = "mysql://profits:profits@192.168.223.76:3306",
   m51 = "mysql://profits:profits@192.168.223.51:3306",
+  local_pg = "postgresql://postgres:postgres@localhost:5432",
 }

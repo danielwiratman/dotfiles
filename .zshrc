@@ -15,7 +15,7 @@ export ANDROID_HOME="$HOME/Android/Sdk"
 export CAPACITOR_ANDROID_STUDIO_PATH="/mnt/c/Program Files/Android/Android Studio/bin/studio64.exe"
 export ADB="/mnt/c/Android/Sdk/platform-tools/adb.exe"
 export EMULATOR="/mnt/c/Android/Sdk/emulator/emulator.exe"
-export KUBECONFIG="$HOME/.kube/aws-config"
+export KUBECONFIG="$HOME/.kube/config"
 
 if command -v asdf >/dev/null 2>&1; then
   export JAVA_HOME=$(asdf where java 2>/dev/null || echo "")
